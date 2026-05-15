@@ -1,38 +1,255 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #0d1117;
+  color: #e6edf3;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.dashboard {
+  min-height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #161b22;
+  border-bottom: 1px solid #30363d;
+}
+
+.nav-brand {
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: #8b949e;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.nav-link.active, .nav-link:hover {
+  color: #e6edf3;
+}
+
+.btn-stop {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  background: #da3633;
+  color: white;
+  transition: opacity 0.2s;
+}
+
+.btn-stop:hover {
+  opacity: 0.85;
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  color: #8b949e;
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-indicator.running {
+  background: #3fb950;
+  box-shadow: 0 0 8px #3fb950;
+}
+
+.status-indicator.stopped {
+  background: #da3633;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.stat-label {
+  color: #8b949e;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.stat-value.positive {
+  color: #3fb950;
+}
+
+.stat-value.negative {
+  color: #da3633;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .content-grid {
+    grid-template-columns: 1fr;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.card h3 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #e6edf3;
+}
+
+.holdings-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.holdings-table th {
+  text-align: left;
+  color: #8b949e;
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #30363d;
+}
+
+.holdings-table td {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #21262d;
+}
+
+.asset-name {
+  font-weight: 600;
+}
+
+.positive { color: #3fb950; }
+.negative { color: #da3633; }
+
+.trades-list {
   display: flex;
   flex-direction: column;
+  gap: 0.75rem;
+}
+
+.trade-item {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 0.75rem;
+  background: #0d1117;
+  border-radius: 6px;
 }
 
-.App-link {
-  color: #61dafb;
+.trade-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.trade-type {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.trade-type.buy {
+  background: rgba(63, 185, 80, 0.2);
+  color: #3fb950;
+}
+
+.trade-type.sell {
+  background: rgba(218, 54, 51, 0.2);
+  color: #da3633;
+}
+
+.trade-pair {
+  font-weight: 500;
+}
+
+.trade-price {
+  color: #8b949e;
+  font-size: 0.875rem;
+}
+
+.trade-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.trade-time {
+  color: #8b949e;
+  font-size: 0.75rem;
+}
+
+.trade-pnl {
+  font-weight: 500;
+}
+
+.strategy-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.strategy-tag {
+  padding: 0.5rem 1rem;
+  background: rgba(63, 185, 80, 0.15);
+  color: #3fb950;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
 }
